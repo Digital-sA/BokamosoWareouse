@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bokamoso Warehouse | Premium Furniture & Home Essentials</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #f72585;
+            --accent: #4cc9f0;
+            --dark: #2b2d42;
+            --light: #f8f9fa;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section with Background Image */
+        .hero {
+            position: relative;
+            padding: 8rem 0;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+                url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80&fm=jpg&crop=entropy&cs=tinysrgb') no-repeat center center;
+            background-size: cover;
+            filter: grayscale(100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 4rem 0 2rem;
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .catalogue {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .product-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin: 1rem 0;
+        }
+
+        .delivery-info {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            margin: 4rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .delivery-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .delivery-info p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .delivery-info ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .delivery-info li {
+            margin-bottom: 0.8rem;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            align-items: center;
+        }
+
+        .payment-method {
+            text-align: center;
+        }
+
+        .payment-method img {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .payment-notice {
+            background-color: #fff8e1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        .payment-notice h4 {
+            color: #ff6f00;
+            margin-bottom: 0.5rem;
+        }
+
+        .map-container {
+            margin: 3rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-card h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-card a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary);
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            margin-bottom: 1rem;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 99;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .catalogue {
+                grid-template-columns: 1fr;
+            }
+
+            .delivery-info {
+                padding: 2rem;
+            }
+
+            .payment-methods {
+                flex-direction: column;
+            }
+
+            .map-container iframe {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <a href="#" class="logo-container">
+                    <img src="logo.jpg" alt="Bokamoso Warehouse Logo" class="logo-img">
+                    <span class="logo-text">Bokamoso<span>Warehouse</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#catalogue">Catalogue</a>
+                    <a href="#delivery">Delivery</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Modern Furniture for Your Home</h1>
+            <p>Discover stylish and affordable furniture pieces that transform your space. Delivered straight to your door in Pretoria, Johannesburg, and Roodepoort.</p>
+            <div>
+                <a href="#catalogue" class="btn">Shop Now</a>
+                <a href="https://wa.me/27745611678" class="btn btn-outline">Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rest of your HTML content remains the same -->
+    <section id="catalogue">
+        <div class="container">
+            <h2 class="section-title">Our Collection</h2>
+            <div class="catalogue">
+                <!-- Product 1 - Kist/Storage -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('Storage.jpg');"></div>
+                    <div class="product-info">
+                        <h3>Kist/Storage</h3>
+                        <p>Stylish wooden chest for versatile storage solutions.</p>
+                        <div class="price">R1350</div>
+                        <a href="https://wa.me/27745611678?text=I'm%20interested%20in%20Kist/Storage%20R1350" class="btn">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 2 - Chest of Drawers -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('Chest of Drawers.jpg');"></div>
+                    <div class="product-info">
+                        <h3>Chest of Drawers</h3>
+                        <p>Elegant 4-drawer chest with smooth gliding drawers.</p>
+                        <div class="price">R2500</div>
+                        <a href="https://wa.me/27745611678?text=I'm%20interested%20in%20Chest%20of%20Drawers%20R2500" class="btn">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 3 - TV Stand -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('TV Stand.jpg');"></div>
+                    <div class="product-info">
+                        <h3>TV Stand</h3>
+                        <p>Modern TV stand with open shelving and cable management.</p>
+                        <div class="price">R1800</div>
+                        <a href="https://wa.me/27745611678?text=I'm%20interested%20in%20TV%20Stand%20R1800" class="btn">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 4 - Headboard & Pedestals -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('Headboard & Pedestals.jpg');"></div>
+                    <div class="product-info">
+                        <h3>Headboard & Pedestals</h3>
+                        <p>Luxury upholstered headboard with matching pedestals.</p>
+                        <div class="price">R2300</div>
+                        <small>Pedestals: R2800</small>
+                        <a href="https://wa.me/27745611678?text=I'm%20interested%20in%20Headboard%20and%20Pedestals" class="btn">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 5 - Headboard (Colors) -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('Headboard.jpg');"></div>
+                    <div class="product-info">
+                        <h3>Headboard (Colors)</h3>
+                        <p>Available in Green, Black, Grey, White.</p>
+                        <div class="price">R850</div>
+                        <a href="https://wa.me/27745611678?text=I'm%20interested%20in%20Headboard%20(R850)" class="btn">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 6 - Oversized Headboard -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('Oversized Headboard.jpg');"></div>
+                    <div class="product-info">
+                        <h3>Oversized Headboard</h3>
+                        <p>King-sized statement headboard with tufted design.</p>
+                        <div class="price">R2500</div>
+                        <a href="https://wa.me/27745611678?text=I'm%20interested%20in%20Oversized%20Headboard%20R2500" class="btn">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 7 - Chairs -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('Chairs.jpg');"></div>
+                    <div class="product-info">
+                        <h3>Chairs</h3>
+                        <p>Set of 2 modern accent chairs with wooden legs.</p>
+                        <div class="price">R1600</div>
+                        <a href="https://wa.me/27745611678?text=I'm%20interested%20in%20Chairs%20R1600" class="btn">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 8 - L-Shaped Couch -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('L-Shaped Couch.jpg');"></div>
+                    <div class="product-info">
+                        <h3>L-Shaped Couch</h3>
+                        <p>Contemporary sectional sofa in grey or black.</p>
+                        <div class="price">R4700</div>
+                        <a href="https://wa.me/27745611678?text=I'm%20interested%20in%20L-Shaped%20Couch%20R4700" class="btn">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 9 - 2-Seater Couch -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('2-Seater Couch.jpg');"></div>
+                    <div class="product-info">
+                        <h3>2-Seater Couch</h3>
+                        <p>Compact sofa perfect for small living spaces.</p>
+                        <div class="price">R1600</div>
+                        <a href="https://wa.me/27745611678?text=I'm%20interested%20in%202-Seater%20Couch%20R1600" class="btn">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 10 - Button Headboard -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('Button Headboard.jpg');"></div>
+                    <div class="product-info">
+                        <h3>Button Headboard</h3>
+                        <p>Classic tufted headboard with diamond pattern.</p>
+                        <div class="price">R1300</div>
+                        <a href="https://wa.me/27745611678?text=I'm%20interested%20in%20Button%20Headboard%20R1300" class="btn">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 11 - 3-Seater Couch -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('3-Seater Couch.jpg');"></div>
+                    <div class="product-info">
+                        <h3>3-Seater Couch</h3>
+                        <p>Spacious sofa with comfortable cushions.</p>
+                        <div class="price">R2500</div>
+                        <a href="https://wa.me/27745611678?text=I'm%20interested%20in%203-Seater%20Couch%20R2500" class="btn">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 12 - Couch & Ottoman -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('Couch & Ottoman.jpg');"></div>
+                    <div class="product-info">
+                        <h3>Couch & Ottoman</h3>
+                        <p>Lounge set with matching footrest.</p>
+                        <div class="price">R3500</div>
+                        <a href="https://wa.me/27745611678?text=I'm%20interested%20in%20Couch%20and%20Ottoman%20R3500" class="btn">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 13 - Headboard & Kist -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('Headboard & Kist.jpg');"></div>
+                    <div class="product-info">
+                        <h3>Headboard & Kist</h3>
+                        <p>Bedroom set with storage chest.</p>
+                        <div class="price">R2200</div>
+                        <a href="https://wa.me/27745611678?text=I'm%20interested%20in%20Headboard%20and%20Kist%20R2200" class="btn">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 14 - TV Stand & Coffee Table -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('TV Stand & Coffee Table.jpg');"></div>
+                    <div class="product-info">
+                        <h3>TV Stand & Coffee Table</h3>
+                        <p>Matching living room furniture set.</p>
+                        <div class="price">R3500</div>
+                        <a href="https://wa.me/27745611678?text=I'm%20interested%20in%20TV%20Stand%20and%20Coffee%20Table%20Combo%20R3500" class="btn">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="delivery" class="delivery-info">
+        <div class="container">
+            <h3>Delivery & Payment Information (Delivery fees vary based on locations)</h3>
+            <p>We deliver around Gauteng with transparent pricing.</p>
+            
+            <h4>Delivery Fees:</h4>
+            <ul>
+                <li><strong>Pretoria:</strong> R250</li>
+                <li><strong>Johannesburg:</strong> R250</li>
+                <li><strong>Roodepoort:</strong> R300</li>
+                <li><strong>Kempton Park:</strong> R250</li>
+            </ul>
+            
+            <div class="payment-notice">
+                <h4><i class="fas fa-exclamation-circle"></i> Important Payment Notice</h4>
+                <p><strong>All payments are done on delivery via EFT only.</strong> Please ensure you make an <strong>immediate payment</strong> when your order arrives. The delivery team cannot leave until payment is confirmed.</p>
+            </div>
+            
+            <h4>Accepted Payment Methods:</h4>
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <img src="fnb.jpg" alt="FNB Bank">
+                    <p><strong>FNB Cheque Account</strong><br>
+                    63090476128<br>
+                    Bokamoso Warehouse</p>
+                </div>
+                <div class="payment-method">
+                    <img src="Tyme-Bank.jpeg" alt="Tyme Bank">
+                    <p><strong>TymeBank Account</strong><br>
+                    5102 3825 024<br>
+                    Bokamoso Warehouse</p>
+                </div>
+            </div>
+            
+            <p><strong>Please use your name as reference when making payments.</strong></p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p>Get in touch with Bokamoso Warehouse for inquiries and orders</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h4><i class="fas fa-map-marker-alt"></i> Address</h4>
+                    <p>Kempton Park, South Africa</p>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.943219224118!2d28.23141531502901!3d-26.1088569834686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9513c7b0e10a0d%3A0x5a1a3b3100dd1f0!2sKempton%20Park%2C%20Ekurhuleni!5e0!3m2!1sen!2sza!4v1689872345678!5m2!1sen!2sza" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <h4><i class="fas fa-phone"></i> Contact</h4>
+                    <a href="tel:+27745611678">074 561 1678</a>
+                    <a href="mailto:bkomane@yahoo.com">bkomane@yahoo.com</a>
+                    
+                    <h4 style="margin-top: 2rem;"><i class="fas fa-clock"></i> Business Hours</h4>
+                    <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                    <p>Saturday: 9:00 AM - 2:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                
+                <div class="contact-card">
+                    <h4><i class="fas fa-share-alt"></i> Social Media</h4>
+                    <a href="https://www.facebook.com/people/Bokamoso-warehouse/61565495232836/" target="_blank"><i class="fab fa-facebook"></i> Facebook Page</a>
+                    <a href="https://www.tiktok.com/@bokamosowarehouse" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+                    <a href="https://wa.me/27745611678" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    
+                    <h4 style="margin-top: 2rem;"><i class="fas fa-info-circle"></i> About Us</h4>
+                    <p>Bokamoso Warehouse is your trusted furniture store in Kempton Park, offering quality home essentials with convenient delivery services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Bokamoso Warehouse</h4>
+                    <p>Your trusted source for quality furniture in Gauteng. We deliver directly to your home.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/people/Bokamoso-warehouse/61565495232836/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@bokamosowarehouse" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/27745611678" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#catalogue">Catalogue</a>
+                    <a href="#delivery">Delivery Info</a>
+                    <a href="#contact">Contact</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Kempton Park, South Africa</p>
+                    <a href="tel:+27745611678"><i class="fas fa-phone"></i> 074 561 1678</a>
+                    <a href="mailto:bkomane@yahoo.com"><i class="fas fa-envelope"></i> bkomane@yahoo.com</a>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 8AM-5PM | Sat: 9AM-2PM</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 Bokamoso Warehouse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/27745611678" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</body>
+</html>
